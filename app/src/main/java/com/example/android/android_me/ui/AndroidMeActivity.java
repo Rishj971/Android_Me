@@ -31,22 +31,26 @@ public class AndroidMeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_android_me);
 
-  BodyPartFragment headFragment  = new BodyPartFragment();
-        headFragment.setmImageIds(AndroidImageAssets.getHeads());
-        headFragment.setmListIndex(1);
 
-       FragmentManager fragmentManager = getSupportFragmentManager();
+        if (savedInstanceState == null) {
 
-        fragmentManager.beginTransaction().add(R.id.head_container ,headFragment).commit();
+            BodyPartFragment headFragment = new BodyPartFragment();
+            headFragment.setmImageIds(AndroidImageAssets.getHeads());
+            headFragment.setmListIndex(1);
+
+            FragmentManager fragmentManager = getSupportFragmentManager();
+
+            fragmentManager.beginTransaction().add(R.id.head_container, headFragment).commit();
 
 
-        BodyPartFragment bodyFragment = new BodyPartFragment();
-        bodyFragment.setmImageIds(AndroidImageAssets.getBodies());
+            BodyPartFragment bodyFragment = new BodyPartFragment();
+            bodyFragment.setmImageIds(AndroidImageAssets.getBodies());
 
-        fragmentManager.beginTransaction().add(R.id.body_container , bodyFragment).commit();
+            fragmentManager.beginTransaction().add(R.id.body_container, bodyFragment).commit();
 
-        BodyPartFragment legFragment = new BodyPartFragment();
-        legFragment.setmImageIds(AndroidImageAssets.getLegs());
-        fragmentManager.beginTransaction().add(R.id.leg_container, legFragment).commit();
+            BodyPartFragment legFragment = new BodyPartFragment();
+            legFragment.setmImageIds(AndroidImageAssets.getLegs());
+            fragmentManager.beginTransaction().add(R.id.leg_container, legFragment).commit();
+        }
     }
-}
+    }
